@@ -16,9 +16,6 @@ class MessageCheck(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         for e in self.expressions:
-            if re.search(f'{e}', message.content):
+            if re.search(f"{e}", message.content):
                 channel = message.channel
-                await channel.send('beep boop banned phrase')
-
-
-
+                await channel.send("beep boop banned phrase")
