@@ -8,7 +8,7 @@ import re2 as re
 class MessageCheck(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.file = "expressions.csv" 
+        self.file = "expressions.csv"
 
         with open(self.file, "r", newline="\n") as csv_file:
             csv_data = csv.reader(csv_file, delimiter=",")

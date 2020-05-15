@@ -2,7 +2,7 @@ import os
 from commands import message_check
 
 import discord
-from discord.ext import commands
+from discord.ext import commands, add_del_expressions
 import re2 as re
 
 bot = commands.Bot(command_prefix="?")
