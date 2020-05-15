@@ -14,8 +14,11 @@ class MessageCheck(commands.Cog):
             self.expressions = csv.reader(e, delimiter=",")
 
     @commands.Cog.listener()
+    """Continuously checks messages for
+    regular expressions added.
+    """
     async def on_message(self, message):
         for e in self.expressions:
-            if re.search(f"{e}", message.content):
+            if re.search(f"\{e}", message.content):
                 channel = message.channel
                 await channel.send("beep boop banned phrase")

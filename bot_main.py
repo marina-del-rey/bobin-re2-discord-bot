@@ -1,4 +1,5 @@
 import os
+from commands import message_check
 
 import discord
 from discord.ext import commands
@@ -11,6 +12,8 @@ bot = commands.Bot(command_prefix="?")
 async def on_ready():
     print(f"{bot.user.name} ready to roll")
 
+
+bot.add_cog(message_check.MessageCheck(bot))
 
 key = os.environ.get("DISCORD_TOKEN")
 bot.run(key)
