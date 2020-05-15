@@ -22,6 +22,9 @@ MANIFEST
 # pyenv
 .python-version
 
+# pycache
+__pycache__/
+
 # environments
 .env
 .venv

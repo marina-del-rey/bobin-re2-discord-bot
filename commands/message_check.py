@@ -8,15 +8,13 @@ import re2 as re
 class MessageCheck(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.file = "expressions.csv"
+        self.file = "expressions.csv" 
 
-        with open(file, "r", newline="\n") as e:
-            self.expressions = csv.reader(e, delimiter=",")
+        with open(self.file, "r", newline="\n") as csv_file:
+            csv_data = csv.reader(csv_file, delimiter=",")
+            self.expressions = list(csv_data)
 
     @commands.Cog.listener()
-    """Continuously checks messages for
-    regular expressions added.
-    """
     async def on_message(self, message):
         for e in self.expressions:
             if re.search(f"\{e}", message.content):
