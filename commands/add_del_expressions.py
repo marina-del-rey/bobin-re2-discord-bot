@@ -10,10 +10,15 @@ class AddDelExpressions(commands.Cog):
         self.bot = bot
         self.file = "expressions.csv"
 
-        with open(file, "r", newline="\n") as e:
-            self.expressions = csv.reader(e, delimiter=",")
+        with open(file, "r") as csv_file:
+            csv_data = csv.reader(csv_file, delimiter=",")
+            self.expressions = list(csv_data)
 
-    # @commands.command(name="add")
-    # async def add_expression(self, ctx, expression):
+    @commands.command(name="add")
+    async def add_expression(self, ctx, expression):
+        count = 0
+        
+        #for exp in self.expressions:
+        #    for i in exp:
 
-    #    def is_valid(self, expression):
+
