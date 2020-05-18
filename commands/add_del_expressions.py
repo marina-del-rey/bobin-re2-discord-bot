@@ -18,7 +18,9 @@ class AddDelExpressions(commands.Cog):
     async def add_expression(self, ctx, expression):
         count = 0
         
-        #for exp in self.expressions:
-        #    for i in exp:
+        channel = expression.channel
+        await channel.send(expression.content)
+
+
 
 

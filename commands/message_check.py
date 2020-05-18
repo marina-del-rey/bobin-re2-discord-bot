@@ -11,7 +11,7 @@ class MessageCheck(commands.Cog):
         self.file = "expressions.csv"
 
         with open(self.file, "r") as csv_file:
-            csv_data = csv.reader(csv_file, delimiter=",")
+            csv_data = csv.reader(csv_file, delimiter="\n")
             self.expressions = list(csv_data)
 
     @commands.Cog.listener()
@@ -21,7 +21,7 @@ class MessageCheck(commands.Cog):
 
         for exp in self.expressions:
             for i in exp:
-                if re.search("{}".format(i), message.content):
+                if re.search("\{}".format(i), message.content):
                     channel = message.channel
                     await message.delete()
                     await channel.send(message.author.mention + " please don't use that phrase here!")
