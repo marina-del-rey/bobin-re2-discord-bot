@@ -1,5 +1,5 @@
 import os
-from commands import message_check
+from commands import message_check, add_del_expressions
 
 import discord
 from discord.ext import commands
@@ -14,6 +14,7 @@ async def on_ready():
 
 
 bot.add_cog(message_check.MessageCheck(bot))
+bot.add_cog(add_del_expressions.AddDelExpressions(bot))
 
 key = os.environ.get("DISCORD_TOKEN")
 bot.run(key)

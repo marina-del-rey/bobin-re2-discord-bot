@@ -40,5 +40,5 @@ pyre2/
 build/
 fb_re2.egg-info/
 
-# misc 
-./regex_test.py
+# vscode
+.vscode/

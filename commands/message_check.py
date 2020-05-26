@@ -16,12 +16,18 @@ class MessageCheck(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        """
+        Checks if messages sent in chat contain banned phrases, 
+        by means of regular expressions.
+        """
         if message.author.bot:
             return False
 
-        for exp in self.expressions:
-            for i in exp:
-                if re.search("\{}".format(i), message.content):
+        for e in self.expressions:
+            for i in e:
+                if re.search(f"{i}", message.content):
                     channel = message.channel
                     await message.delete()
-                    await channel.send(message.author.mention + " please don't use that phrase here!")
+                    await channel.send(
+                        message.author.mention + " please don't use that phrase here!"
+                    )

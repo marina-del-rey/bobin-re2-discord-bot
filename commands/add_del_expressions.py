@@ -10,17 +10,29 @@ class AddDelExpressions(commands.Cog):
         self.bot = bot
         self.file = "expressions.csv"
 
-        with open(file, "r") as csv_file:
-            csv_data = csv.reader(csv_file, delimiter=",")
-            self.expressions = list(csv_data)
+        with open(self.file, "r") as csv_file:
+            reader = csv.reader(csv_file, delimiter="\n")
+            self.expressions = list(reader)
 
-    @commands.command(name="add")
-    async def add_expression(self, ctx, expression):
+    @commands.command(name="addexp")
+    async def add_expression(self, ctx, *args):
+        """
+        Allows user to add an expression to list of ones used for checking messages.
+        Writes said expression to the csv file of expressions.
+        """
+        def was_already_added(exp):
+            for e in exp:
+                for i in e:
+                    if i not in self.expressions or valid_exp:
+                        return False
+
         count = 0
-        
-        channel = expression.channel
-        await channel.send(expression.content)
+        valid_exp = []
+        for e in args:
+            if not was_already_added(e):
+                print(valid_exp)
+                valid_exp.append(e)
+                count += 1
 
-
-
-
+        response = f"sucessfully added {count} expression(s)!"
+        await ctx.send(response)
