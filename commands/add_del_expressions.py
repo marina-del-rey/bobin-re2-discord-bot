@@ -55,3 +55,5 @@ class AddDelExpressions(commands.Cog):
         Dm's it to the user.
         """
         expressions = utils.read_from_csv(self.file)
+        user = ctx.message.author
+        await bot.send_message(user, expressions)

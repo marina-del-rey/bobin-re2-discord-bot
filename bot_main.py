@@ -11,6 +11,7 @@ bot = commands.Bot(command_prefix="?")
 @bot.event
 async def on_ready():
     print(f"{bot.user.name} ready to roll")
+    print("made by marina")
 
 
 bot.add_cog(message_check.MessageCheck(bot))
