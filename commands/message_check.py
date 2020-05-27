@@ -4,15 +4,13 @@ import discord
 from discord.ext import commands
 import re2 as re
 
+from utils import utils
+
 
 class MessageCheck(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.file = "expressions.csv"
-
-        with open(self.file, "r") as csv_file:
-            csv_data = csv.reader(csv_file, delimiter="\n")
-            self.expressions = list(csv_data)
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -23,7 +21,9 @@ class MessageCheck(commands.Cog):
         if message.author.bot:
             return False
 
-        for e in self.expressions:
+        expressions = utils.read_from_csv(self.file)
+
+        for e in expressions:
             for i in e:
                 if re.search(f"{i}", message.content):
                     channel = message.channel
