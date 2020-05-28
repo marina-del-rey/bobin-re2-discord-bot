@@ -36,6 +36,7 @@ class AddDelExpressions(commands.Cog):
         """
         count = 0
         removed_exps = []
+
         expressions = utils.read_from_csv(self.file)
 
         for e in args:
@@ -52,8 +53,12 @@ class AddDelExpressions(commands.Cog):
     async def list_expressions(self, ctx):
         """
         Lists the expressions in the csv file.
-        Dm's it to the user.
+        Dms it to the user.
         """
         expressions = utils.read_from_csv(self.file)
         user = ctx.message.author
-        await bot.send_message(user, expressions)
+        await user.send("here are the current expressions saved: ")
+        for e in expressions:
+            for i in e: 
+                await user.send(i)
+                

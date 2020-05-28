@@ -52,3 +52,10 @@ def remove_from_csv(expression, filename):
                     for e in expressions:
                         csv_data.writerow([e])
                         return True
+
+def print_csv(filename):
+    """
+    Prints the expressions in a csv file
+    """
+    expressions = read_from_csv(filename)
+    
