@@ -41,21 +41,10 @@ def remove_from_csv(expression, filename):
     Removes an expression from a csv file.
     True -> sucessfully removed expression from file.
     """
-    expressions = read_from_csv(filename)
-    for exp in expressions:
-        for i in exp:
-            if expression == i:
-                expressions.remove(i)
-
-                with open(filename, "w", newline="") as csv_file:
-                    csv_data = csv.writer(csv_file)
-                    for e in expressions:
-                        csv_data.writerow([e])
-                        return True
-
-def print_csv(filename):
-    """
-    Prints the expressions in a csv file
-    """
-    expressions = read_from_csv(filename)
-    
+    if expression_already_in_file(expression, filename):
+        expressions = read_from_csv(filename)
+        with open(filename, "w", newline="") as csv_file:
+            csv_data = csv.writer(csv_file)
+            for e in expressions:
+                csv_data.writerow([e])
+                return True

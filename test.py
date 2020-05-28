@@ -14,4 +14,6 @@ e_list = ["\p{Greek}", "\p{Cyrillic}", "\p{Korean}"]
 # for i in e_list:
 #    print(utils.expression_already_in_file(i, file))
 
-print(utils.write_to_csv(e, file))
+#print(utils.write_to_csv(e, file))
+
+utils.remove_from_csv(e, file)

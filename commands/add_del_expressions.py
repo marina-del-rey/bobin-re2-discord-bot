@@ -25,7 +25,7 @@ class AddDelExpressions(commands.Cog):
             if success:
                 count += 1
 
-        response = f"sucessfully added {count} expression(s)! :roxiBlush:"
+        response = f"sucessfully added {count} expression(s)! widepeepoHappy"
         await ctx.send(response)
 
     @commands.command(name="delexp")
@@ -59,6 +59,5 @@ class AddDelExpressions(commands.Cog):
         user = ctx.message.author
         await user.send("here are the current expressions saved: ")
         for e in expressions:
-            for i in e: 
-                await user.send(i)
-                
+            test = "".join([str(x) for x in e])
+            await user.send(test)
