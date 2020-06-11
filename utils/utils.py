@@ -27,7 +27,7 @@ def expression_already_in_file(expression, filename):
 def append_to_csv(expression, filename):
     """
     Appends an expression to a csv file.
-    True -> wrote to file sucessfully
+    True -> appended to file sucessfully
     """
     with open(filename, "a", newline="") as csv_file:
         csv_data = csv.writer(csv_file)
@@ -36,15 +36,10 @@ def append_to_csv(expression, filename):
             return True
 
 
-def remove_from_csv(expression, filename):
-    """
-    Removes an expression from a csv file.
-    True -> sucessfully removed expression from file.
-    """
-    if expression_already_in_file(expression, filename):
-        expressions = read_from_csv(filename)
-        with open(filename, "w", newline="") as csv_file:
-            csv_data = csv.writer(csv_file)
-            for e in expressions:
-                csv_data.writerow([e])
-                return True
+#def remove_from_csv(expression, filename):
+#    """
+#    Removes an expression from a csv file.
+#    True -> sucessfully removed expression from file.
+#    """
+#    #if expression_already_in_file(expression, filename):
+        
