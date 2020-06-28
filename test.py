@@ -1,5 +1,6 @@
 import csv
 
+from tabulate import tabulate
 from utils import utils
 
 
@@ -19,11 +20,15 @@ e_list = ["\p{Greek}", "\p{Cyrillic}", "\p{Korean}"]
 
 #print(utils.write_to_csv(e, file))
 
-if utils.expression_already_in_file(e, file):
-    expressions = utils.read_from_csv(file)
-    expressions.remove([e])
-    print(expressions)
+#if utils.expression_already_in_file(e, file):
+#    expressions = utils.read_from_csv(file)
+#    expressions.remove([e])
+#    print(expressions)
 
-    with open(file, "w") as csv_file:
-        csv_data = csv.writer(csv_file)
-        csv_data.writerows([expressions])
+#    with open(file, "w") as csv_file:
+#        csv_data = csv.writer(csv_file)
+#        csv_data.writerows([expressions])
+
+i = 2
+headers = ["i", "expression"]
+print(tabulate(([e] for e in e_list), headers, showindex=i, colalign=('center', 'left')))

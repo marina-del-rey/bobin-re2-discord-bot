@@ -3,6 +3,7 @@ import csv
 import discord
 from discord.ext import commands
 import re2 as re
+from tabulate import tabulate
 
 from utils import utils
 
@@ -21,11 +22,15 @@ class AddDelExpressions(commands.Cog):
         count = 0
 
         for e in args:
-            success = utils.append_to_csv(e)
+            success = utils.append_to_csv(e, self.file)
             if success:
                 count += 1
 
-        response = f"sucessfully added {count} expression(s)! widepeepoHappy"
+        if count > 0:
+            response = f"sucessfully added {count} expression(s)!"
+        else:
+            response = "no expressions were added"
+
         await ctx.send(response)
 
     @commands.command(name="delexp")
@@ -36,7 +41,6 @@ class AddDelExpressions(commands.Cog):
         """
         count = 0
         removed_exps = []
-
         expressions = utils.read_from_csv(self.file)
 
         for e in args:
@@ -46,18 +50,33 @@ class AddDelExpressions(commands.Cog):
                     removed_exps.append(e)
                     count += 1
 
-        response = f"sucessfully removed {count} expression(s) : {removed_exps}"
+        if count > 0:
+            reponse = f"sucessfully removed {count} expression(s) : {removed_exps}"
+        else:
+            response = "no expressions were removed"
+        
         await ctx.send(response)
 
     @commands.command(name="list")
     async def list_expressions(self, ctx):
         """
-        Lists the expressions in the csv file.
+        Lists the expressions in the csv file in table form.
         Dms it to the user.
         """
         expressions = utils.read_from_csv(self.file)
+        table = (e for e in expressions)
+        headers = ["i", "expression"]
         user = ctx.message.author
-        await user.send("here are the current expressions saved: ")
-        for e in expressions:
-            test = "".join([str(x) for x in e])
-            await user.send(test)
+
+        await user.send(
+            "list of expressions"
+            + "```"
+            + tabulate(
+                table,
+                headers,
+                showindex=True,
+                tablefmt="presto",
+                colalign=("center", "left"),
+            )
+            + "```"
+        )
