@@ -1,8 +1,8 @@
 import csv
 
 import discord
-from discord.ext import commands
 import re2 as re
+from discord.ext import commands
 from tabulate import tabulate
 
 from utils import utils
@@ -44,11 +44,10 @@ class AddDelExpressions(commands.Cog):
         expressions = utils.read_from_csv(self.file)
 
         for e in args:
-            in_file = utils.expression_already_in_file(e, self.file)
-            if in_file:
-                if utils.remove_from_csv(e, self.file):
-                    removed_exps.append(e)
-                    count += 1
+            success = utils.remove_from_csv(e, self.file)
+            if success:
+                removed_exps.append(e)
+                count += 1
 
         if count > 0:
             reponse = f"sucessfully removed {count} expression(s) : {removed_exps}"

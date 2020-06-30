@@ -20,7 +20,8 @@ class MessageCheck(commands.Cog):
         """
         if message.author.bot:
             return False
-        elif message.startswith("?"):
+        elif message.content.startswith("?"):
+            #print("starts with command...ignoring check!")
             return False
 
         expressions = utils.read_from_csv(self.file)
