@@ -36,24 +36,38 @@ def append_to_csv(expression, filename):
             return True
 
 
-def remove_from_csv(expression, filename):
+def remove_by_index(index, filename):
+    """
+    Removes an expression from a csv file by index.
+    True -> sucessfully removed expression from file. 
+    """
+    expressions = read_from_csv(filename)
+    len_exp = len(expressions)
+    if index < len(expressions):
+        expressions.pop(index)
+        if len(expressions) == (len_exp - 1):
+            with open(filename, "w", newline="") as writefile:
+                writer = csv.writer(writefile)
+                for exp in expressions:
+                    for i in exp:
+                        writer.writerow([i])
+                    return True
+        
+
+def remove_by_exp(expression, filename):
     """
     Removes an expression from a csv file.
     True -> sucessfully removed expression from file.
     """
-    if expression_already_in_file(expression, filename):
-        expressions = list()
-
-        with open(filename, "r", newline="") as readfile:
-            reader = csv.reader(readfile)
-            for row in reader:
-                expressions.append(row)
-                for exp in row:
-                    for i in exp:
-                        if i == expression:
-                            expressions.remove(i)
-
+    if expression_already_in_file(expression,filename):
+        expressions = read_from_csv(filename) 
+        expressions.remove([expression])
         with open(filename, "w", newline="") as writefile:
             writer = csv.writer(writefile)
-            writer.writerows([expressions])
-            return True
+            for exp in expressions:
+                    for i in exp:
+                        writer.writerow([i])
+                    return True
+
+
+

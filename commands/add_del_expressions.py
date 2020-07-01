@@ -3,6 +3,7 @@ import csv
 import discord
 import re2 as re
 from discord.ext import commands
+from discord.ext.commands import has_permissions
 from tabulate import tabulate
 
 from utils import utils
@@ -14,6 +15,7 @@ class AddDelExpressions(commands.Cog):
         self.file = "expressions.csv"
 
     @commands.command(name="addexp")
+    @has_permissions(administrator=True)
     async def add_expression(self, ctx, *args):
         """
         Allows user to add expressions to the list of ones used for checking messages.
@@ -34,29 +36,34 @@ class AddDelExpressions(commands.Cog):
         await ctx.send(response)
 
     @commands.command(name="delexp")
+    @has_permissions(administrator=True)
     async def del_expression(self, ctx, *args):
         """
-        Allows user to delete expressions from the list of expressions.
+        Allows user to delete expressions from the list of expressions by index.
         Removes the expression from the csv file.
         """
         count = 0
         removed_exps = []
-        expressions = utils.read_from_csv(self.file)
 
         for e in args:
-            success = utils.remove_from_csv(e, self.file)
+            if e is int: # by index
+                success = utils.remove_by_index(e, self.file)
+            else:        # by expression
+                success = utils.remove_by_exp(e, self.file)
+
             if success:
                 removed_exps.append(e)
                 count += 1
 
         if count > 0:
-            reponse = f"sucessfully removed {count} expression(s) : {removed_exps}"
+            reponse = f"sucessfully removed {count} expression(s) : {[removed_exps]}"
         else:
             response = "no expressions were removed"
         
         await ctx.send(response)
 
     @commands.command(name="list")
+    @has_permissions(administrator=True)
     async def list_expressions(self, ctx):
         """
         Lists the expressions in the csv file in table form.
@@ -68,7 +75,7 @@ class AddDelExpressions(commands.Cog):
         user = ctx.message.author
 
         await user.send(
-            "list of expressions"
+            "list of expressions\n"
             + "```"
             + tabulate(
                 table,

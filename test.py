@@ -4,10 +4,6 @@ from tabulate import tabulate
 from utils import utils
 
 
-# this is where i test stuff
-# im lonely and i miss serena
-# coding the longing away
-
 file = "expressions.csv"
 e = "\p{Greek}"
 e_list = ["\p{Greek}", "\p{Cyrillic}", "\p{Korean}"]
@@ -29,6 +25,8 @@ e_list = ["\p{Greek}", "\p{Cyrillic}", "\p{Korean}"]
 #        csv_data = csv.writer(csv_file)
 #        csv_data.writerows([expressions])
 
-i = 2
-headers = ["i", "expression"]
-print(tabulate(([e] for e in e_list), headers, showindex=i, colalign=('center', 'left')))
+#i = 2
+#headers = ["i", "expression"]
+#print(tabulate(([e] for e in e_list), headers, showindex=i, colalign=('center', 'left')))
+
+utils.remove_by_exp(e, file)
