@@ -52,22 +52,19 @@ def remove_by_index(index, filename):
                     for i in exp:
                         writer.writerow([i])
                     return True
-        
+
 
 def remove_by_exp(expression, filename):
     """
-    Removes an expression from a csv file.
+    Removes an expression from a csv file by expression.
     True -> sucessfully removed expression from file.
     """
-    if expression_already_in_file(expression,filename):
-        expressions = read_from_csv(filename) 
+    if expression_already_in_file(expression, filename):
+        expressions = read_from_csv(filename)
         expressions.remove([expression])
         with open(filename, "w", newline="") as writefile:
             writer = csv.writer(writefile)
             for exp in expressions:
-                    for i in exp:
-                        writer.writerow([i])
-                    return True
-
-
-
+                for i in exp:
+                    writer.writerow([i])
+                return True

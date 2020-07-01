@@ -46,20 +46,17 @@ class AddDelExpressions(commands.Cog):
         removed_exps = []
 
         for e in args:
-            if e is int: # by index
-                success = utils.remove_by_index(e, self.file)
-            else:        # by expression
-                success = utils.remove_by_exp(e, self.file)
-
+            print(e)
+            success = utils.remove_by_exp(e, self.file)
             if success:
                 removed_exps.append(e)
                 count += 1
 
         if count > 0:
-            reponse = f"sucessfully removed {count} expression(s) : {[removed_exps]}"
+            response = f"sucessfully removed {count} expression(s) : {removed_exps}"
         else:
             response = "no expressions were removed"
-        
+
         await ctx.send(response)
 
     @commands.command(name="list")
@@ -75,7 +72,9 @@ class AddDelExpressions(commands.Cog):
         user = ctx.message.author
 
         await user.send(
-            "list of expressions\n"
+            "```"
+            + "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ list of regular expressions ✧\n"
+            + "```"
             + "```"
             + tabulate(
                 table,

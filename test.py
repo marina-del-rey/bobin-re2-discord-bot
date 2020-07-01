@@ -14,9 +14,9 @@ e_list = ["\p{Greek}", "\p{Cyrillic}", "\p{Korean}"]
 # for i in e_list:
 #    print(utils.expression_already_in_file(i, file))
 
-#print(utils.write_to_csv(e, file))
+# print(utils.write_to_csv(e, file))
 
-#if utils.expression_already_in_file(e, file):
+# if utils.expression_already_in_file(e, file):
 #    expressions = utils.read_from_csv(file)
 #    expressions.remove([e])
 #    print(expressions)
@@ -25,8 +25,7 @@ e_list = ["\p{Greek}", "\p{Cyrillic}", "\p{Korean}"]
 #        csv_data = csv.writer(csv_file)
 #        csv_data.writerows([expressions])
 
-#i = 2
-#headers = ["i", "expression"]
-#print(tabulate(([e] for e in e_list), headers, showindex=i, colalign=('center', 'left')))
+# headers = ["i", "expression"]
+# print(tabulate(([e] for e in e_list), headers, showindex=i, colalign=('center', 'left')))
 
 utils.remove_by_exp(e, file)
