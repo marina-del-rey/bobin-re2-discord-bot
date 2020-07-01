@@ -13,7 +13,7 @@ async def on_ready():
     print(f"{bot.user.name} ready to roll")
     print("greetings from marina")
     await bot.change_presence(
-        status=discord.Status.online, activity=discord.Game("with marina's feelings")
+        status=discord.Status.online, activity=discord.Game("with kat")
     )
 
 
