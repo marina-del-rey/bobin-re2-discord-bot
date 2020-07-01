@@ -73,17 +73,25 @@ class AddDelExpressions(commands.Cog):
         headers = ["i", "expression"]
         user = ctx.message.author
 
-        await user.send(
-            "```"
-            + "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ list of regular expressions ✧\n"
-            + "```"
-            + "```"
-            + tabulate(
-                table,
-                headers,
-                showindex=True,
-                tablefmt="presto",
-                colalign=("center", "left"),
+        try:
+            await user.send(
+                "```"
+                + "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ list of regular expressions ✧\n"
+                + "```"
+                + "```"
+                + tabulate(
+                    table,
+                    headers,
+                    showindex=True,
+                    tablefmt="presto",
+                    colalign=("center", "left"),
+                )
+                + "```"
             )
-            + "```"
-        )
+        except IndexError:
+            await user.send(
+                "```"
+                + "there are currently no expressions being checked!\n"
+                + "do ?addexp [args] to add expression(s)."
+                + "```"
+            )
