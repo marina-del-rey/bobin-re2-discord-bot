@@ -3,8 +3,8 @@ My friend Bonin asked me to make him a Discord bot which uses Google's RE2 regul
 
 ## Commands
 - **?list** lists expressions
-- **?addexp [args]** used to add expressions
-- **?addexp [args]** used to remove expressions
+- **?addexp [args]** used to add expressions to csv file
+- **?addexp [args]** used to remove expressions from csv file
 
 ## Setting it up
 
