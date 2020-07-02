@@ -18,5 +18,5 @@ You will also need to download the [RE2 library](https://github.com/google/re2/w
   
 ## To-do list
 - Add an editexp command so users can edit expressions
-- Fix remove by index output
+- Fix remove by index success output
 
