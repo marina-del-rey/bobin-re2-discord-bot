@@ -15,6 +15,8 @@ pip install -r requirements.txt
 ```
 
 You will also need to download and build the [RE2 library](https://github.com/google/re2/wiki/Install), as well as its Python wrapper, [pyre2](https://github.com/axiak/pyre2#id3). For both, you will need a Unix shell. If you're using Windows, consider using the Windows Subsystems for Linux.
+
+Also, make sure to change the authentication token, located in the bot_main.py file, to your own. I suggest having it as an environment variable.
   
   
 ## To-do list
