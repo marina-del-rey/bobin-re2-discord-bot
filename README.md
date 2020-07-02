@@ -2,7 +2,8 @@
 My friend Bonin asked me to make him a Discord bot which uses Google's RE2 regular expressions library in order to check for banned phrases in text channels, as well as delete those messages. It allows admins to add and delete expressions, which are stored in a csv file. 
 
 ## Commands
-- **?list** sends dm to user with table of expressions and their indexes
+These can only be called by roles with the Administrator permission.
+- **?list** sends dm to admin with table of expressions and their indexes
 - **?addexp [args]** adds expression(s) to csv file
 - **?addexp [args]** removes expression(s) from csv file
 
