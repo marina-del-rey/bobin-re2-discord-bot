@@ -14,7 +14,7 @@ In order to get the bot running, make sure to first install the required Python 
 pip install -r requirements.txt
 ```
 
-You will also need to download the [RE2 library](https://github.com/google/re2/wiki/Install), as well as its Python wrapper, [pyre2](https://github.com/axiak/pyre2#id3). For both, you will need a Unix shell. If you're using Windows, consider using the Windows Subsystems for Linux.
+You will also need to download and build the [RE2 library](https://github.com/google/re2/wiki/Install), as well as its Python wrapper, [pyre2](https://github.com/axiak/pyre2#id3). For both, you will need a Unix shell. If you're using Windows, consider using the Windows Subsystems for Linux.
   
   
 ## To-do list
