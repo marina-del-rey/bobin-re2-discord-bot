@@ -50,8 +50,8 @@ def remove_by_index(index, filename):
                 writer = csv.writer(writefile)
                 for exp in expressions:
                     for i in exp:
-                        writer.writerow([i])
-                    return True
+                        writer.writerow([i])  
+                return True
 
 
 def remove_by_exp(expression, filename):
@@ -67,4 +67,4 @@ def remove_by_exp(expression, filename):
             for exp in expressions:
                 for i in exp:
                     writer.writerow([i])
-                return True
+            return True

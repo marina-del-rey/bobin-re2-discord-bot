@@ -46,7 +46,7 @@ class AddDelExpressions(commands.Cog):
         removed_exps = []
 
         for e in args:
-            if e is int:
+            if e.isdigit():
                 success = utils.remove_by_index(int(e), self.file)
             else:
                 success = utils.remove_by_exp(e, self.file)
